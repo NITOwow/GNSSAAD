@@ -2,7 +2,7 @@
 #define GPS_MANAGER_H
 
 #include <Arduino.h>
-#include <SoftwareSerial.h>
+#include <HardwareSerial.h>
 #include <RTClib.h>
 #include "GPSDataTypes.h"
 #include "NMEAParser.h"
@@ -75,15 +75,3 @@ public:
 
 #endif
 
-#if defined(ESP32)
-  // ESP32 uses HardwareSerial
-  #define GPS_SERIAL Serial1
-#elif defined(ESP8266)
-  #include <SoftwareSerial.h>
-  extern SoftwareSerial gpsSerial;
-  #define GPS_SERIAL gpsSerial
-#else
-  #include <SoftwareSerial.h>
-  extern SoftwareSerial gpsSerial;
-  #define GPS_SERIAL gpsSerial
-#endif
